@@ -1,0 +1,7 @@
+# Include your project-specific ignores in this file
+# Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
+/html5-boilerplate_v5.2.0.zip
+
+/node_modules
+/favicon-c.png
+/favicon-i.png

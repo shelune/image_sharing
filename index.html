@@ -1,0 +1,233 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,100,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <header class="site-header">
+            <div class="header-container">
+                <div class="header__name">
+                    <span>Sharimage</span>
+                </div>
+                
+                <div class="header__functions">
+                    <input type="text" class="search-bar" placeholder="Search by tag / users">
+                    <a href="#"><i class="fa fa-search"></i></a>
+                    <a href="#"><i class="fa fa-sort"></i></a>
+                    <ul class="sort-options">
+                        <li class="active"><a href="#">DATE</a></li>
+                        <li><a href="#">LIKES</a></li>
+                    </ul>
+                </div>
+
+                <div class="header__users">
+                    <button class="pure-button login">
+                        <i class="fa fa-sign-in"></i>
+                        <span data-letters="Log In">Log In</span>
+                    </button>
+
+                    <button class="pure-button signup">
+                        <i class="fa fa-user-plus"></i>
+                        <span data-letters="Sign Up">Sign Up</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="modal modal--flip modal--lightbox">
+            <div class="modal-content">
+                <figure class="image-content">
+                    <img src="http://placehold.it/1200x800" alt="">
+                </figure>
+                <form action="" class="form--comment">
+                    <textarea name="comment" id="comment-submit" class="form--comment__comment" placeholder="Submit a comment"></textarea>
+                    <input class="submit-button" type="submit" value="Submit">
+                </form>
+                <div class="comment-section">
+                    <div class="comment">
+                        <div class="comment__author"><a href="#">Some Author</a></div>
+                        <p class="comment__content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi consequuntur repellat eius a itaque, in ratione ipsam, perferendis temporibus. Adipisci itaque, dolores voluptas? Molestias assumenda quidem aliquid dicta reiciendis sed!</p>
+                    </div>
+
+                    <div class="comment">
+                        <div class="comment__author"><a href="#">Some Author</a></div>
+                        <p class="comment__content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, assumenda.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="close-button">×</button>
+        </div> 
+
+        <div class="modal modal--flip" aria-labelledby="modal-title" role="dialog" data-form="login">
+            <div class="modal-content" role="document" tabindex="-1">
+                <h3>- Start Uploading -</h3>
+                <form action="" class="form--login" >
+                    <!-- <label for="username">Username</label> -->
+                    <br>
+                    <span class="input input--chisato">
+                        <input class="input-field input-field--chisato" type="text" id="username" placeholder="Username" required>
+                        <label for="username" class="input-label input-label--chisato">
+                            <span class="input-label__content input-label__content--chisato" data-content="Username">Username</span>
+                        </label>
+                    </span>
+                    <br>
+                    <!-- <label for="password">Password</label> -->
+                    <span class="input input--chisato">
+                        <input class="input-field input-field--chisato" type="password" id="password" placeholder="Password" required>
+                        <label for="username" class="input-label input-label--chisato">
+                            <span class="input-label__content input-label__content--chisato" data-content="Password">Password</span>
+                        </label>
+                    </span>
+                    <br>
+                    <span><input class="submit-button" type="submit" value="Log In" id="submit-login"></span>
+                </form>
+                <button class="close-button" id="modal-close" aria-label="close"><span>×</span></button>
+            </div>
+        </div>
+
+        <div class="modal modal--flip" aria-labelledby="modal-title" role="dialog" data-form="signup">
+            <div class="modal-content" role="document" tabindex="-1">
+                <h3>- Join The Sharing -</h3>
+                <form action="webresources/entity.user" method="POST" class="form--signup">
+                    <!-- <label for="username">Username</label> -->
+                    <br>
+                    <span class="input input--chisato">
+                        <input class="input-field input-field--chisato" type="text" name="username" placeholder="Username" required>
+                        <label for="username" class="input-label input-label--chisato">
+                            <span class="input-label__content input-label__content--chisato" data-content="Username">Username</span>
+                        </label>
+                    </span>
+                    <br>
+                    <!-- <label for="password">Password</label> -->
+                     <span class="input input--chisato">
+                        <input class="input-field input-field--chisato" type="password" name="password" placeholder="Password" required>
+                        <label for="username" class="input-label input-label--chisato">
+                            <span class="input-label__content input-label__content--chisato" data-content="Password">Password</span>
+                        </label>
+                    </span>
+                    <br>
+                    <input class="submit-button" type="submit" value="Sign Up" id="submit-signup">
+                </form>
+                <button class="close-button" id="modal-close" aria-label="close"><span>×</span></button>
+            </div>
+        </div>
+
+        <div class="modal-overlay"></div>
+        
+        <div class="container">     
+            <div class="gallery">
+            <!-- a>figure.photo-pane>img[src="http://placehold.it/600x250"]+i.fa.fa-heart+figcaption{Some Author} -->
+                <figure class="photo-pane">
+                    <img src="http://placehold.it/600x250" alt="">
+                    <i class="fa fa-heart"><span>4</span></i>
+                    <figcaption>Some Author</figcaption>
+                </figure>
+                <figure class="photo-pane">
+                    <img src="http://placehold.it/600x250" alt="">
+                    <i class="fa fa-heart"></i>
+                    <figcaption>Some Author</figcaption>
+                </figure>
+                <figure class="photo-pane">
+                    <img src="http://placehold.it/600x250" alt="">
+                    <i class="fa fa-heart"></i>
+                    <figcaption>Some Author</figcaption>
+                </figure>
+                <figure class="photo-pane">
+                    <img src="http://placehold.it/600x250" alt="">
+                    <i class="fa fa-heart"></i>
+                    <figcaption>Some Author</figcaption>
+                </figure>
+                <figure class="photo-pane">
+                    <img src="http://placehold.it/600x250" alt="">
+                    <i class="fa fa-heart"></i>
+                    <figcaption>Some Author</figcaption>
+                </figure>
+                <figure class="photo-pane">
+                    <img src="http://placehold.it/600x250" alt="">
+                    <i class="fa fa-heart"></i>
+                    <figcaption>Some Author</figcaption>
+                </figure>
+                <figure class="photo-pane">
+                    <img src="http://placehold.it/600x250" alt="">
+                    <i class="fa fa-heart"></i>
+                    <figcaption>Some Author</figcaption>
+                </figure>
+                <figure class="photo-pane">
+                    <img src="http://placehold.it/600x250" alt="">
+                    <i class="fa fa-heart"></i>
+                    <figcaption>Some Author</figcaption>
+                </figure>
+                <figure class="photo-pane">
+                    <img src="http://placehold.it/600x250" alt="">
+                    <i class="fa fa-heart"></i>
+                    <figcaption>Some Author</figcaption>
+                </figure>
+            </div>
+
+            <div class="upload-section">
+                <h2>Upload the image real quick here</h2>
+                <div class="upload-box">
+                    <form action="upload" class="form--upload" method="POST" enctype="multipart/form-data">
+                        <input type="file" class="input-file input-file-round" id="upload" name="file" data-multiple-caption="{count} files selected" multiple>
+                        <label for="upload">
+                            <figure class="upload-icon">
+                                <svg viewBox="0 0 20 17" height="17" width="20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path>
+                                </svg>
+                            </figure>
+                            <span>Choose an image</span>
+                        </label>
+                        <input class="submit-button" type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        
+        <footer class="main-footer">
+            <div class="copy-right">
+                <span>© 2015 Team Something. All Rights Reserved.</span>
+            </div>
+            <nav class="footer-nav">
+                <ul>
+                    <li class="active"><a href="">About</a></li>
+                    <li><a href="">Documentation</a></li>
+                    <li><a href="">Members</a></li>
+                </ul>
+            </nav>
+        </footer>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+        <script src="js/vendor/jQuery.xml2json.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+    </body>
+</html>

@@ -1,0 +1,982 @@
+/*! HTML5 Boilerplate v5.2.0 | MIT License | https://html5boilerplate.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+@import 'fonts.css';
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+    text-rendering: optimizeLegibility;
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+
+/*
+* Remove text-shadow in selection highlight:
+* https://twitter.com/miketaylr/status/12228805301
+*
+* These selection rule sets have to be separate.
+* Customize the background color to match your design.
+*/
+
+::-moz-selection {
+    background: #ffb0aa;
+    text-shadow: none;
+}
+
+::selection {
+    background: #ffb0aa;
+    text-shadow: none;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+a {
+    color: #fff;
+    outline: 0;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #222;
+}
+
+header {
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    height: 6em;
+}
+
+figure {
+    margin: 0.5em;
+    position: relative;
+}
+
+figcaption {
+    transition: all 0.2s cubic-bezier(0.4, 0.6, 0.8, 1);
+}
+
+input:required:invalid {
+    box-shadow: none;
+}
+
+.container {
+    min-height: 100%;
+}
+
+/* ==========================================================================
+   Header part
+   ========================================================================== */
+
+.header-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.header__name {
+    /* float: left; */
+}
+
+.header__name span {
+    font-family: 'Rissa', sans-serif;
+    font-size: 4em;
+}
+
+.header__functions {
+    position: relative;
+}
+
+.header__functions i {
+    font-size: 2.5em;
+    margin: 0 .2em;
+    transition: transform 0.3s cubic-bezier(.66,.06,.37,.97);
+}
+
+.button-hidden {
+    transform: translateY(-200%);
+}
+
+.search-bar {
+    padding: 0 0.5em;
+    position: absolute;
+    display: inline-block;
+    color: rgb(27, 26, 20);
+    opacity: 0;
+    width: 0;
+    visibility: hidden;
+    outline: none;
+    border: 0;
+    line-height: 2em;
+    transition: width 0.5s cubic-bezier(.66,.06,.37,.97), opacity 0.5s cubic-bezier(.66,.06,.37,.97);
+}
+
+.search-bar-open {
+    width: 250%;
+    transform: translateX(-25%);
+    margin-top: 0.3em;
+    opacity: 1;
+    visibility: visible;
+}
+
+.sort-options {
+    display: flex;
+    position: absolute;
+    transform: translateX(-25%);
+    transition: opacity 0.2s ease;
+    opacity: 0;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.sort-options li {
+    padding: 0.5em 0.8em;
+    background: rgba(255, 255, 255, 0.8);
+    transition: background 0.2s ease;
+}
+
+.sort-options li.active {
+    background: rgb(187, 5, 100);
+}
+
+.header__users {
+    position: relative;
+    overflow: hidden;
+}
+
+.header__users button {
+    margin-right: .5em;    
+    position: relative;
+}
+
+.pure-button {
+    border-radius: 0;
+    transition: background 0.3s cubic-bezier(.66,.06,.37,.97);
+}
+
+.pure-button span, .pure-button i {
+    transition: color 0.3s cubic-bezier(.66,.06,.37,.97);
+}
+
+.pure-button:hover {
+    background: rgb(187, 5, 100);
+}   
+
+.pure-button:hover span, .pure-button:hover i {
+    color: #fff;
+}
+
+input.upload {
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+}
+
+.upload-label {
+    border-radius: 0;
+    padding: 0.75em 1em;
+    color: rgba(0, 0, 0, 0.8);
+    background-color: #e6e6e6;
+    transition: background 0.3s cubic-bezier(.66,.06,.37,.97);
+    margin-right: 0.5em;
+}
+
+.upload-label > * {
+    cursor: pointer;
+}
+
+.upload-label:hover {
+    background: rgb(188, 5, 100);
+    color: #fff;
+}
+
+/* ==========================================================================
+   Gallery part
+   ========================================================================== */
+
+.gallery {
+    margin-top: 3em;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.photo-pane {
+    max-width: 400px;
+    position: relative;
+    cursor: pointer;
+}
+
+.photo-pane img {
+    max-width: 100%;
+    height: auto;
+}
+
+.photo-pane figcaption {
+    z-index: 1;
+    color: rgba(255, 255, 255, 0.85);
+    opacity: 0;
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+}
+
+.fa-heart {
+    opacity: 0;
+    color: rgb(187, 5, 100);
+    position: absolute;
+    bottom: 0.125em;
+    left: 0.25em;
+    cursor: pointer;
+    transition: opacity 0.2s cubic-bezier(0.4, 0.6, 0.8, 1);
+    z-index: 10;
+    font-size: 2em;
+}
+
+.fa-heart span {
+    position: absolute;
+    font-size: 0.5em;
+    font-family: 'Lato', sans-serif;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    color: #fff;
+}
+
+.photo-pane:hover figcaption, .photo-pane:hover .fa-heart {
+    opacity: 1;
+}
+
+.photo-pane::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    background: transparent;
+    transition: all 0.2s cubic-bezier(0.4, 0.6, 0.8, 1);
+}
+
+.photo-pane:hover::after {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.photo-pane:hover img {
+    filter: blur(1px) contrast(0.9) brightness(0.9);
+}
+
+/* ==========================================================================
+   Upload part
+   ========================================================================== */
+
+.upload-section {
+    margin: 4em auto;
+    text-align: center;
+}
+
+.upload-section h2 {
+    color: rgb(187, 5, 100);
+    font-size: 4em;
+    text-align: center;
+    font-weight: 100;
+}
+
+.upload-box {
+    color: #fff;
+}
+
+.js .input-file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.input-file + label {
+    max-width: 85%;
+    font-size: 1.5em;
+    font-weight: 400;
+    color: rgb(187, 5, 100);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.upload-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: rgb(187, 5, 100);
+    display: block;
+    padding: 20px;
+    margin: 0 auto 10px;
+    padding: auto;
+    position: relative;
+}
+
+.input-file + label svg {
+    width: 75%;
+    height: 75%;
+    vertical-align: middle;
+    fill: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: -0.5em;
+}
+
+.input-file-round:focus + label figure,
+.input-file-round.has-focus + label figure,
+.input-file-round + label:hover figure {
+    background-color: rgb(132, 4, 68);
+}
+
+.upload-section .submit-button {
+    display: block;
+    text-align: center;
+    margin: auto;
+    margin-top: 1em;
+}
+
+/* ==========================================================================
+   Footer part
+   ========================================================================== */
+
+
+.main-footer {
+    height: 4em;
+    width: 100%;
+    padding: 0 10%;
+    background: rgb(0, 0, 0);
+    position: relative;
+}
+
+.footer-nav {
+    float: right;
+    width: 30%;
+}
+
+.footer-nav ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.footer-nav a {
+    display: inline-block;
+    transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+    color: rgb(187, 5, 100);
+}
+
+.copy-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #3d3d3d;
+}
+
+
+/* ==========================================================================
+   Modal box part
+   ========================================================================== */
+
+.modal-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 0;
+    background: rgba(22, 22, 22, 0.5);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.show ~ .modal-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    max-width: 30em;
+    min-width: 20em;
+    height: auto;
+    z-index: 99;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    visibility: hidden;
+}
+
+.modal--flip {
+    perspecttive: 1200px;
+}
+
+.modal--flip .modal-content {
+    transform-style: preserve-3d;
+    transform: rotateY(-70deg);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.show.modal--flip .modal-content {
+    transform: rotateY(0deg);
+    opacity: 1;
+}
+
+.modal-content {
+    color: #fff;
+    background: #000;
+    margin: 0 auto;
+    position: relative;
+}
+
+.modal-content h3 {
+    margin: 0;
+    padding: 0.5em;
+    background: rgb(132, 4, 68);
+    text-align: center;
+    font-weight: 400;
+    font-size: 2.5em;
+}
+
+.form--signup, .form--login {
+    position: relative;
+    padding: 1em 2em;
+    margin: 0;
+    text-align: center;
+}
+
+.modal-content input {
+    margin-bottom: 1em;
+    padding: 1em;
+    outline: none;
+    text-decoration: none;
+    line-height: 1.5em;
+    width: 15em;
+}
+
+.submit-button {
+    font-weight: 900;
+    margin-bottom: 2em;
+    position: relative;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    color: currentColor;
+    background: rgb(188, 5, 100);
+    text-decoration: none;
+    border: 0;
+    outline: none;
+    transition: background 0.2s ease;
+}
+
+input[type="submit"]:hover {
+    background: rgb(132, 4, 68);
+}
+
+.show {
+    visibility: visible;
+}
+
+.close-button {
+    position: absolute;
+    right: 0;
+    transform: translateY(-50%);
+    background: rgb(187, 5, 100);
+    width: 60px;
+    height: 60px;
+    margin-right: -30px;
+    border-radius: 50%;
+    border: 0;
+    font-size: 2.5em;
+    transition: all 0.2s ease;
+}
+
+.close-button:hover {
+    background: rgb(132, 4, 68);
+}
+
+.close-button span {
+    position: relative;
+    overflow: hidden;
+    transition: color 0.2s ease;
+}
+
+.close-button span:hover {
+    color: transparent;
+}
+
+.close-button span::before, .close-button span::after {
+    position: absolute;
+    content: '';
+    height: 3px;
+    background: #fff;
+    width: 100%;
+    top: 50%;
+    transition: all 0.3s cubic-bezier(0.4, 0.6, 0.8, 1);
+    overflow: hidden;
+}
+
+.close-button span::before {
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.close-button span::after {
+    -webkit-transform: translateX(-100%) rotate(45deg);
+    -ms-transform: translateX(-100%) rotate(45deg);
+    transform: translateX(-100%) rotate(45deg);
+}
+
+.close-button span:hover::before {
+    -webkit-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    transform: rotate(225deg);
+}
+
+.close-button span:hover::after {
+    -webkit-transform: translateX(-100%) rotate(-225deg);
+    -ms-transform: translateX(-100%) rotate(-225deg);
+    transform: translateX(-100%) rotate(-225deg);
+}
+
+
+
+/* ==========================================================================
+   Custom Inputs
+   ========================================================================== */
+
+span.input {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+}
+
+.input-field {
+    position: relative;
+    display: block;
+    float: right;
+    border: none;
+
+}
+
+.input-field--chisato {
+    width: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    transition: border-color 0.3s ease;
+    background: transparent;
+}
+
+.input-field--chisato:focus {
+    border-color: rgb(188, 5, 100);
+    outline: medium none;
+}
+
+.input-label--chisato {
+    display: none;
+}
+/* PSEUDO ELEMENT BUT NO SO NECESSARY RIGHT NOW
+.input-label__content--chisato::after {
+    content: attr(data-content);
+    position: absolute;
+    top: -200%;
+    left: 0;
+    color: rgb(188, 5, 100);
+    font-weight: bold;
+} */
+
+/* ==========================================================================
+Lightbox part
+========================================================================== */
+
+.modal--lightbox {
+    max-width: 100em;
+    opacity: 0;
+    transition: all 0.4s ease;
+    padding: 0.5em;
+    border: 2px solid rgb(188, 5, 100);
+    background: rgb(255, 255, 255);
+}
+
+.show.modal--lightbox {
+    opacity: 1;
+}
+
+.modal--lightbox .modal-content {
+    background: transparent;
+    max-height: 90vh;
+    overflow: scroll;
+}
+
+.image-content {
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.modal--lightbox img {
+    max-width: 100%;
+}
+
+.form--comment {
+    position: relative;
+    width: 100%;
+    padding: 0.5em 0.5em;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.form--comment__comment {
+    margin: 0;
+    padding: 0.5em;
+    height: 4em;
+    color: #000;
+    outline: none;
+    resize: none;
+    border: 2px solid rgba(0, 0, 0, 0.75);
+    border-right: 0;
+    flex-basis: 80%;
+}
+
+.form--comment .submit-button {
+    height: 4em;
+    flex-basis: 20%;
+}
+
+.comment-section {
+    padding: 0 0.5em;
+}
+
+.comment {
+    position: relative;
+    padding: 0.25em 0.5em 1em 0.5em;
+    background: rgba(0, 0, 0, 0.75);
+    clear: both;
+}
+.comment::after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 0;
+    width: 95%;
+    height: 2px;
+    background: linear-gradient(90deg, rgb(188, 5, 100), transparent);
+}
+
+.comment__content {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, .85);
+    margin: 0.2em 0;
+}
+
+.comment__author a {
+    color: rgb(188, 5, 100);
+    margin-top: -0.25em;
+    font-size: 0.75em;
+}
+
+.modal--lightbox .close-button {
+    top: 0;
+    height: 30px;
+    width: 30px;
+    margin-right: -15px;
+    font-size: 1.25em;
+    color: #fff;
+}
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers:
+ */
+
+.hidden {
+    display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media only screen and (max-width: 24em) {
+    .header__name {
+        width: 0;
+        opacity: 0;
+        z-index: -1;
+    }
+
+    .header-container {
+        flex-flow: row wrap;
+    }
+
+    .gallery img {
+        max-width: 300px;
+    }
+
+    .close-button {
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+}
+
+@media print,
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 1.25dppx),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:viheaderd {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
