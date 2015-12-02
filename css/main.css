@@ -117,6 +117,7 @@ ul {
 body {
     font-family: 'Lato', sans-serif;
     background-color: #222;
+    position: relative;
 }
 
 header {
@@ -124,6 +125,7 @@ header {
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
     height: 6em;
+    position: relative;
 }
 
 figure {
@@ -154,6 +156,10 @@ input:required:invalid {
     justify-content: space-between;
     align-items: center;
     position: relative;
+}
+
+.header-container--small {
+    display: none;
 }
 
 .header__name {
@@ -733,6 +739,10 @@ Lightbox part
     flex-flow: row wrap;
 }
 
+#form--comment__hidden-id {
+    display: none !important;
+}
+
 .form--comment__comment {
     margin: 0;
     padding: 0.5em;
@@ -741,7 +751,7 @@ Lightbox part
     outline: none;
     resize: none;
     border: 2px solid rgba(0, 0, 0, 0.75);
-    border-right: 0;
+    border-right-width: 0px;
     flex-basis: 80%;
 }
 
@@ -884,7 +894,25 @@ Lightbox part
     }
 
     .header-container {
-        flex-flow: row wrap;
+        display: none;
+    }
+
+    .header-container--small {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .functions--small .pure-button {
+        padding: 0.75em 1.5em;
+    }
+
+    .functions--small a {
+        color: rgba(0, 0, 0, 0.8);
     }
 
     .gallery img {
@@ -894,6 +922,17 @@ Lightbox part
     .close-button {
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
+    }
+
+    .form--comment__comment {
+        flex-basis: 100%;
+        border-right-width: 2px;
+    }
+
+    .form--comment .submit-button {
+        flex-basis: 100%;
+        height: 2em;
+        padding: 0;
     }
 }
 

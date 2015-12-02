@@ -49,15 +49,35 @@
                     </button>
                 </div>
             </div>
+
+            <div class="header-container--small">
+                <div class="functions--small functions__upload">
+                    <button class="pure-button signup">
+                        <a href="#upload-box"><i class="fa fa-upload"></i></a>
+                    </button>
+                </div>
+                <div class="functions--small functions__login">
+                    <button class="pure-button login">
+                        <i class="fa fa-sign-in"></i>
+                    </button>
+                </div>
+                <div class="functions--small functions__signup">
+                    <button class="pure-button signup">
+                        <i class="fa fa-user-plus"></i>
+                    </button>
+                </div>
+            </div>
         </header>
 
         <div class="modal modal--flip modal--lightbox">
+            <!-- lightbox to display the images -->
             <div class="modal-content">
                 <figure class="image-content">
                     <img src="http://placehold.it/1200x800" alt="">
                 </figure>
-                <form action="" class="form--comment">
+                <form action="webresources/entity.comment" class="form--comment" method="POST">
                     <textarea name="comment" id="comment-submit" class="form--comment__comment" placeholder="Submit a comment"></textarea>
+                    <textarea name="img-id" id="form--comment__hidden-id"></textarea>
                     <input class="submit-button" type="submit" value="Submit">
                 </form>
                 <div class="comment-section">
@@ -183,8 +203,8 @@
 
             <div class="upload-section">
                 <h2>Upload the image real quick here</h2>
-                <div class="upload-box">
-                    <form action="upload" class="form--upload" method="POST" enctype="multipart/form-data">
+                <div class="upload-box" id="upload-box">
+                    <form action="upload" class="form--upload" method="POST"enc type="multipart/form-data">
                         <input type="file" class="input-file input-file-round" id="upload" name="file" data-multiple-caption="{count} files selected" multiple>
                         <label for="upload">
                             <figure class="upload-icon">

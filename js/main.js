@@ -43,13 +43,16 @@ $(document).ready(function() {
 	$('.photo-pane').click(function() {
 		$('.show').removeClass('show');
 		$('.modal--lightbox').addClass('show');
-                $('.modal--lightbox img').attr("src", $(this).find('img').attr("src"));
-                $('.modal--lightbox textarea').attr("img-id", $(this).find('img').attr("img-id"));
-                console.log($('.modal--lightbox textarea').attr("img-id"));
+        $('.modal--lightbox img').attr("src", $(this).find('img').attr("src"));
+        $('.modal--lightbox textarea[name="img-id"]').text($(this).find('img').attr("img-id"));
 	});
 
 	$('.close-button').click(function() {
 		$('.show').removeClass('show');
+	});
+
+	$('.submit-button').click(function() {
+		$('#comment-submit, .input-field').val('');
 	});
     
     
@@ -79,7 +82,6 @@ $(document).ready(function() {
             for (var i = 0; i < photoPanes.length; i += 1) {
                 photoPanes.eq(i).attr("src", "http://192.168.56.1/upload/" + images.image[i].ipath);
                 photoPanes.eq(i).attr("img-id", images.image[i].iid);
-                console.log(images.image[i].iPath);
             }
         });
 });
