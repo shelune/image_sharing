@@ -6,7 +6,9 @@ $(document).ready(function() {
 		sortButton = $('.fa-sort'),
 		searchBar = $('.search-bar'),
 		inputs = $( '.input-file' ),
-		uploadButton = $('button.upload');
+		uploadButton = $('button.upload'),
+		imageEntity = "http://192.168.56.1:8080/WebApplication3/webresources/entity.image",
+		commentEntity = "http://192.168.56.1:8080/WebApplication3/webresources/entity.comment";
 
 	searchButton.click(function() {
 		$('.header__functions i').addClass('button-hidden');
@@ -41,18 +43,25 @@ $(document).ready(function() {
 	});
 
 	$('.photo-pane').click(function() {
-		var hiddenImgId = $(this).find('img').attr("src");
+		var hiddenImgId = $(this).find('img').attr("img-id"),
+			imgSrc = $(this).find('img').attr("src"),
+			commentSection = $('.comment-section');
+
 		$('.show').removeClass('show');
 		$('.modal--lightbox').addClass('show');
-        $('.modal--lightbox img').attr("src", hiddenImgId);
+        $('.modal--lightbox img').attr("src", imgSrc);
         $('.modal--lightbox textarea[name="img-id"]').text(hiddenImgId);
-        $.get("http://192.168.56.1:8080/WebApplication3/webresources/entity.comment", function (xml) {
+
+        $.get(commentEntity, function (xml) {
         	var comments = $.xml2json(xml),
-        		commentTotal = Object.keys(comments.comment).length,
-        		commentSection = $('.comment-section');
+        		commentTotal = Object.keys(comments.comment).length;      		
+        	commentSection.empty();
         	for (var i = 0; i < commentTotal; i += 1) {
-        		commentSection.append('<div class="comment"><div class="comment__author"><a href="#">Some Author</a></div><p class="comment__content">' + comments.comment[i].cment + '</p></div>')
-        		console.log(comments.comment[i].cment);
+        		if (comments.comment[i].img.iid === hiddenImgId) {
+        			commentSection.append('<div class="comment"><div class="comment__author"><a href="#">Some Author</a></div><p class="comment__content">' + comments.comment[i].cment + '</p></div>')
+        			console.log(comments.comment[i].iid);
+        		}
+        		// console.log(comments.comment[i].img.iid);
         	}
         });
 	});
