@@ -76,9 +76,9 @@
                     <img src="http://placehold.it/1200x800" alt="">
                 </figure>
                 <form action="webresources/entity.comment" class="form--comment" method="POST">
-                    <textarea name="comment" id="comment-submit" class="form--comment__comment" placeholder="Submit a comment"></textarea>
+                    <textarea name="comment" id="form--comment__comment" class="form--comment__comment" placeholder="Submit a comment"></textarea>
                     <textarea name="img-id" id="form--comment__hidden-id"></textarea>
-                    <input class="submit-button" type="submit" value="Submit">
+                    <input class="submit-button" type="submit" value="Submit" onsubmit="" id="form--comment__submit">
                 </form>
                 <div class="comment-section">
 
@@ -152,7 +152,22 @@
             <!-- a>figure.photo-pane>img[src="http://placehold.it/600x250"]+i.fa.fa-heart+figcaption{Some Author} -->
                 <figure class="photo-pane">
                     <img src="http://placehold.it/600x250" alt="">
-                    <i class="fa fa-heart"><span>4</span></i>
+                    <i class="fa fa-heart"></i>
+                    <figcaption>Some Author</figcaption>
+                </figure>
+                <figure class="photo-pane">
+                    <img src="http://placehold.it/600x250" alt="">
+                    <i class="fa fa-heart"></i>
+                    <figcaption>Some Author</figcaption>
+                </figure>
+                <figure class="photo-pane">
+                    <img src="http://placehold.it/600x250" alt="">
+                    <i class="fa fa-heart"></i>
+                    <figcaption>Some Author</figcaption>
+                </figure>
+                <figure class="photo-pane">
+                    <img src="http://placehold.it/600x250" alt="">
+                    <i class="fa fa-heart"></i>
                     <figcaption>Some Author</figcaption>
                 </figure>
                 <figure class="photo-pane">
@@ -245,5 +260,6 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
+
     </body>
 </html>

@@ -71,6 +71,20 @@ $(document).ready(function() {
 	});
 
 	$('.form--comment .submit-button').click(function() {
+		var hiddenImgId = $('photo-pane').find('img').attr("img-id"),
+			commentSection = $('.comment-section');
+
+		$.get(commentEntity, function (xml) {
+        	var comments = $.xml2json(xml),
+        		commentTotal = Object.keys(comments.comment).length;      		
+        	commentSection.empty();
+        	for (var i = 0; i < commentTotal; i += 1) {
+        		if (comments.comment[i].img.iid === hiddenImgId) {
+        			commentSection.append('<div class="comment"><div class="comment__author"><a href="#">Some Author</a></div><p class="comment__content">' + comments.comment[i].cment + '</p></div>');
+        		}
+        		// console.log(comments.comment[i].img.iid);
+        	}
+        });
 
 		/*
 		$.ajax({
@@ -113,11 +127,13 @@ $(document).ready(function() {
   
         $.get("http://192.168.56.1:8080/WebApplication3/webresources/entity.image", function (xml) {
             var images = $.xml2json(xml),
-                photoPanes = $('.photo-pane img');
+                photoPanes = $('.photo-pane img'),
+                intendedPhotoPanes = 12,
+                imageTotal = Object.keys(images.image).length;
 
-            for (var i = 0; i < photoPanes.length; i += 1) {
-                photoPanes.eq(i).attr("src", "http://192.168.56.1/upload/" + images.image[i].ipath);
-                photoPanes.eq(i).attr("img-id", images.image[i].iid);
+            for (var i = imageTotal - 1, j = 0; i >= Math.abs(imageTotal - intendedPhotoPanes); i -= 1, j += 1) {
+                photoPanes.eq(j).attr("src", "http://192.168.56.1/upload/" + images.image[i].ipath);
+                photoPanes.eq(j).attr("img-id", images.image[i].iid);
             }
         });
 });
