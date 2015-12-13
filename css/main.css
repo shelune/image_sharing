@@ -129,7 +129,6 @@ header {
 }
 
 figure {
-    margin: 0.5em;
     position: relative;
 }
 
@@ -143,6 +142,13 @@ input:required:invalid {
 
 .container {
     min-height: 100%;
+}
+
+.section-title {
+    color: rgb(187, 5, 100);
+    font-size: 4em;
+    text-align: center;
+    font-weight: 100;
 }
 
 /* ==========================================================================
@@ -241,11 +247,20 @@ input:required:invalid {
 
 .pure-button {
     border-radius: 0;
-    transition: background 0.3s cubic-bezier(.66,.06,.37,.97);
+    transition: background 0.3s ease;
 }
 
 .pure-button span, .pure-button i {
     transition: color 0.3s cubic-bezier(.66,.06,.37,.97);
+}
+
+button.upload a {
+    transition: color 0.3s ease;
+    color: #000;
+}
+
+button.upload:hover a {
+    color: #fff;
 }
 
 .pure-button:hover {
@@ -306,7 +321,7 @@ input.upload {
     position: absolute;
     height: 4px;
     width: 0.1px;
-    background: rgba(188, 5, 100, 0.8);;
+    background: rgba(188, 5, 100, 0.8);
     content: '';
     transition: width 0.3s cubic-bezier(.57,.02,.35,.99);
 }
@@ -349,18 +364,21 @@ input.upload {
 
 .photo-pane figcaption {
     z-index: 1;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(0, 0, 0, 0.9);
+    text-shadow: 0 0 1px #fff;
+    padding: 0.25em;
     opacity: 0;
     position: absolute;
     top: 0.5em;
     right: 0.5em;
+    background: rgba(255, 255, 255, 0.75);
 }
 
-.fa-heart {
+.fa-comment {
     opacity: 0;
     color: rgb(187, 5, 100);
     position: absolute;
-    bottom: 0.125em;
+    bottom: 0.25em;
     left: 0.25em;
     cursor: pointer;
     transition: opacity 0.2s cubic-bezier(.57,.02,.35,.99);
@@ -368,7 +386,7 @@ input.upload {
     font-size: 2em;
 }
 
-.fa-heart span {
+.fa-comment span {
     position: absolute;
     font-size: 0.5em;
     font-family: 'Lato', sans-serif;
@@ -376,9 +394,10 @@ input.upload {
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
     color: #fff;
+    text-shadow: 0 0 1px #000;
 }
 
-.photo-pane:hover figcaption, .photo-pane:hover .fa-heart {
+.photo-pane:hover figcaption, .photo-pane:hover .fa-comment {
     opacity: 1;
 }
 
@@ -393,13 +412,6 @@ input.upload {
 .upload-section {
     margin: 4em auto;
     text-align: center;
-}
-
-.upload-section h2 {
-    color: rgb(187, 5, 100);
-    font-size: 4em;
-    text-align: center;
-    font-weight: 100;
 }
 
 .upload-box {
@@ -560,7 +572,8 @@ input.upload {
     margin-bottom: 2em;
     position: relative;
     padding: 0.5em 1em;
-    font-size: 1em;
+    text-transform: uppercase;
+    line-height: 1;
     color: currentColor;
     background: rgb(188, 5, 100);
     text-decoration: none;
@@ -569,7 +582,7 @@ input.upload {
     transition: background 0.2s ease;
 }
 
-input[type="submit"]:hover {
+.submit-button:hover {
     background: rgb(132, 4, 68);
 }
 
@@ -711,11 +724,24 @@ Lightbox part
 
 .image-content {
     text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    
+}
+
+.image-description {
+    background: rgb(188, 5, 100);
+    position: relative;
+    color: #000;
+    padding-left: 0.5em;
+}
+
+figcaption h4 {
+    text-align: left;
+    margin-top: 0;
 }
 
 .modal--lightbox img {
     max-width: 100%;
+    min-height: 100%;
 }
 
 .form--comment {
@@ -745,6 +771,12 @@ Lightbox part
 .form--comment .submit-button {
     height: 4em;
     flex-basis: 20%;
+}
+
+.form--comment .submit-button:disabled:hover {
+    cursor: not-allowed;
+    background: #ececec;
+    color: #000;
 }
 
 .comment-section {
@@ -949,7 +981,7 @@ Lightbox part
     }
 
     .functions--small a {
-        color: rgba(0, 0, 0, 0.8);
+        color: rgba(0, 0, 0, 0.85);
     }
 
     .gallery img {
@@ -963,6 +995,9 @@ Lightbox part
     .close-button {
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
+        width: 30px;
+        height: 30px;
+        font-size: 1.25em;
     }
 
     .form--comment__comment {
@@ -995,6 +1030,10 @@ Lightbox part
         font-size: 0.75em;
         position: relative;
         text-align: center;
+    }
+
+    .modal-content h3 {
+        font-size: 1.75em;
     }
 }
 

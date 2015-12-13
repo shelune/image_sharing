@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="">
     <meta charset="utf-8">
@@ -24,16 +25,16 @@
         <header class="site-header">
             <div class="header-container">
                 <div class="header__name">
-                    <span>Sharimage</span>
+                    <a href="index.html"><span>Sharimage</span></a>
                 </div>
                 
                 <div class="header__functions">
-                    <input type="text" class="search-bar" placeholder="Search by tag / users">
+                    <input type="text" class="search-bar" placeholder="Search by tag / users" name="username--search">
                     <a href="#"><i class="fa fa-search"></i></a>
                     <a href="#"><i class="fa fa-sort"></i></a>
                     <ul class="sort-options">
-                        <li class="active"><a href="#">DATE</a></li>
-                        <li><a href="#">LIKES</a></li>
+                        <li class="active"><a href="#">DESCENDING</a></li>
+                        <li><a href="#">ASCENDING</a></li>
                     </ul>
                 </div>
 
@@ -52,8 +53,8 @@
 
             <div class="header-container--small">
                 <div class="functions--small functions__upload">
-                    <button class="pure-button signup">
-                        <a href="#upload-box"><i class="fa fa-upload"></i></a>
+                    <button class="pure-button upload">
+                        <a href="#upload-section"><i class="fa fa-upload"></i></a>
                     </button>
                 </div>
                 <div class="functions--small functions__login">
@@ -74,10 +75,14 @@
             <div class="modal-content">
                 <figure class="image-content">
                     <img src="http://placehold.it/1200x800" alt="">
+                    <figcaption class="image-description">
+                        <h4>Uploaded by <span class="description__author"></span> | Published: <span class="description__date"></span></h4>
+                    </figcaption>
                 </figure>
                 <form action="webresources/entity.comment" class="form--comment" method="POST">
                     <textarea name="comment" id="form--comment__comment" class="form--comment__comment" placeholder="Submit a comment"></textarea>
                     <textarea name="img-id" id="form--comment__hidden-id"></textarea>
+                    <input type="hidden" value="" name="comment-user-id">
                     <input class="submit-button" type="submit" value="Submit" onsubmit="" id="form--comment__submit">
                 </form>
                 <div class="comment-section">
@@ -94,11 +99,11 @@
         <div class="modal modal--flip" aria-labelledby="modal-title" role="dialog" data-form="login">
             <div class="modal-content" role="document" tabindex="-1">
                 <h3>- Start Uploading -</h3>
-                <form action="" class="form--login" >
+                <form class="form--login" method="POST">
                     <!-- <label for="username">Username</label> -->
                     <br>
                     <span class="input input--chisato">
-                        <input class="input-field input-field--chisato" type="text" id="username" placeholder="Username" required>
+                        <input class="input-field input-field--chisato" type="text" id="username" name="username" placeholder="Username" required>
                         <label for="username" class="input-label input-label--chisato">
                             <span class="input-label__content input-label__content--chisato" data-content="Username">Username</span>
                         </label>
@@ -106,13 +111,13 @@
                     <br>
                     <!-- <label for="password">Password</label> -->
                     <span class="input input--chisato">
-                        <input class="input-field input-field--chisato" type="password" id="password" placeholder="Password" required>
+                        <input class="input-field input-field--chisato" type="password" id="password" name="password" placeholder="Password" required>
                         <label for="username" class="input-label input-label--chisato">
                             <span class="input-label__content input-label__content--chisato" data-content="Password">Password</span>
                         </label>
                     </span>
                     <br>
-                    <span><input class="submit-button" type="submit" value="Log In" id="submit-login"></span>
+                    <span><input class="submit-button" type="button" value="Log In" id="submit-login"></span>
                 </form>
                 <button class="close-button" id="modal-close" aria-label="close"><span>×</span></button>
             </div>
@@ -121,11 +126,11 @@
         <div class="modal modal--flip" aria-labelledby="modal-title" role="dialog" data-form="signup">
             <div class="modal-content" role="document" tabindex="-1">
                 <h3>- Join The Sharing -</h3>
-                <form action="webresources/entity.user" method="POST" class="form--signup">
+                <form class="form--signup">
                     <!-- <label for="username">Username</label> -->
                     <br>
                     <span class="input input--chisato">
-                        <input class="input-field input-field--chisato" type="text" name="username" placeholder="Username" required>
+                        <input class="input-field input-field--chisato" type="text" name="username" placeholder="Username" id="username--signup" required>
                         <label for="username" class="input-label input-label--chisato">
                             <span class="input-label__content input-label__content--chisato" data-content="Username">Username</span>
                         </label>
@@ -133,13 +138,13 @@
                     <br>
                     <!-- <label for="password">Password</label> -->
                      <span class="input input--chisato">
-                        <input class="input-field input-field--chisato" type="password" name="password" placeholder="Password" required>
+                        <input class="input-field input-field--chisato" type="password" name="password" placeholder="Password" id="password--signup" required>
                         <label for="username" class="input-label input-label--chisato">
                             <span class="input-label__content input-label__content--chisato" data-content="Password">Password</span>
                         </label>
                     </span>
                     <br>
-                    <input class="submit-button" type="submit" value="Sign Up" id="submit-signup">
+                    <input class="submit-button" type="button" value="Sign Up" id="submit-signup">
                 </form>
                 <button class="close-button" id="modal-close" aria-label="close"><span>×</span></button>
             </div>
@@ -149,73 +154,73 @@
         
         <div class="container">     
             <div class="gallery">
-            <!-- a>figure.photo-pane>img[src="http://placehold.it/600x250"]+i.fa.fa-heart+figcaption{Some Author} -->
+            <!-- (figure.photo-pane>img[src="http://placehold.it/600x250"]+i.fa.fa-heart+figcaption{Some Author}) -->
                 <figure class="photo-pane">
                     <img src="http://placehold.it/600x250" alt="">
-                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-comment"></i>
                     <figcaption>Some Author</figcaption>
                 </figure>
                 <figure class="photo-pane">
                     <img src="http://placehold.it/600x250" alt="">
-                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-comment"></i>
                     <figcaption>Some Author</figcaption>
                 </figure>
                 <figure class="photo-pane">
                     <img src="http://placehold.it/600x250" alt="">
-                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-comment"></i>
                     <figcaption>Some Author</figcaption>
                 </figure>
                 <figure class="photo-pane">
                     <img src="http://placehold.it/600x250" alt="">
-                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-comment"></i>
                     <figcaption>Some Author</figcaption>
                 </figure>
                 <figure class="photo-pane">
                     <img src="http://placehold.it/600x250" alt="">
-                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-comment"></i>
                     <figcaption>Some Author</figcaption>
                 </figure>
                 <figure class="photo-pane">
                     <img src="http://placehold.it/600x250" alt="">
-                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-comment"></i>
                     <figcaption>Some Author</figcaption>
                 </figure>
                 <figure class="photo-pane">
                     <img src="http://placehold.it/600x250" alt="">
-                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-comment"></i>
                     <figcaption>Some Author</figcaption>
                 </figure>
                 <figure class="photo-pane">
                     <img src="http://placehold.it/600x250" alt="">
-                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-comment"></i>
                     <figcaption>Some Author</figcaption>
                 </figure>
                 <figure class="photo-pane">
                     <img src="http://placehold.it/600x250" alt="">
-                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-comment"></i>
                     <figcaption>Some Author</figcaption>
                 </figure>
                 <figure class="photo-pane">
                     <img src="http://placehold.it/600x250" alt="">
-                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-comment"></i>
                     <figcaption>Some Author</figcaption>
                 </figure>
                 <figure class="photo-pane">
                     <img src="http://placehold.it/600x250" alt="">
-                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-comment"></i>
                     <figcaption>Some Author</figcaption>
                 </figure>
                 <figure class="photo-pane">
                     <img src="http://placehold.it/600x250" alt="">
-                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-comment"></i>
                     <figcaption>Some Author</figcaption>
                 </figure>
             </div>
 
-            <div class="upload-section">
-                <h2>Upload the image real quick here</h2>
+            <div class="upload-section" id="upload-section">
+                <h2 class="section-title">Upload the image real quick here</h2>
                 <div class="upload-box" id="upload-box">
-                    <form action="upload" class="form--upload" method="POST"enc type="multipart/form-data">
+                    <form action="upload" class="form--upload" method="POST" enctype="multipart/form-data">
                         <input type="file" class="input-file input-file-round" id="upload" name="file" data-multiple-caption="{count} files selected" multiple>
                         <label for="upload">
                             <figure class="upload-icon">
@@ -226,6 +231,7 @@
                             <span>Choose an image</span>
                         </label>
                         <input class="submit-button" type="submit" value="Submit">
+                        <input type="hidden" value="" name="userID">
                     </form>
                 </div>
             </div>
@@ -259,6 +265,13 @@
             e.src='https://www.google-analytics.com/analytics.js';
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+
+        <script>
+            var refreshPage = function () {
+                alert("User registration successful!");
+                location.reload();
+            }
         </script>
 
     </body>
