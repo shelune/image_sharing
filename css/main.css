@@ -151,6 +151,18 @@ input:required:invalid {
     font-weight: 100;
 }
 
+.section-title.disappear {
+    display: none;
+}
+
+.section-title.appear {
+    display: block;
+}
+
+.section-title.appear a {
+    color: rgb(188, 5, 100);
+}
+
 /* ==========================================================================
    Header part
    ========================================================================== */
@@ -315,6 +327,7 @@ input.upload {
     max-width: 400px;
     position: relative;
     cursor: pointer;
+    border: 1px solid rgba(188, 5, 100, 0.5);
 }
 
 .photo-pane::after, .photo-pane::before {
@@ -731,12 +744,18 @@ Lightbox part
     background: rgb(188, 5, 100);
     position: relative;
     color: #000;
-    padding-left: 0.5em;
 }
 
 figcaption h4 {
     text-align: left;
-    margin-top: 0;
+    margin: 0;
+    padding-left: 0.5em;
+    border-bottom: 1px solid #fff;
+}
+
+figcaption h5 {
+    font-size: 0.75em;
+    text-align: center;
 }
 
 .modal--lightbox img {
@@ -818,6 +837,10 @@ figcaption h4 {
     margin-right: -15px;
     font-size: 1.25em;
     color: #fff;
+}
+
+.description__author {
+    cursor: pointer;
 }
 
 /* ==========================================================================
@@ -952,6 +975,17 @@ figcaption h4 {
 
     .footer-nav li {
         margin: 0 0.5em;
+    }
+
+    .form--comment__comment {
+        flex-basis: 100%;
+        border-right-width: 2px;
+    }
+
+    .form--comment .submit-button {
+        flex-basis: 100%;
+        height: 2em;
+        padding: 0;
     }
 }
 

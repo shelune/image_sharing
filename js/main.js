@@ -7,6 +7,7 @@ $(document).ready(function() {
 		searchBar = $('.search-bar'),
 		inputs = $( '.input-file' ),
 		uploadButton = $('button.upload'),
+		intendedPhotoPanes = 12,
 		imageEntity = "http://192.168.56.1:8080/WebApplication3/webresources/entity.image",
 		commentEntity = "http://192.168.56.1:8080/WebApplication3/webresources/entity.comment";
 
@@ -14,7 +15,6 @@ $(document).ready(function() {
 		$.get("http://192.168.56.1:8080/WebApplication3/webresources/entity.image", function (xml) {
 	        var images = $.xml2json(xml),
 	            photoPanes = $('.photo-pane img'),
-	            intendedPhotoPanes = 12,
 	            sortOrder = $('.sort-options li.active').find('a').text().toLowerCase(),
 	            imageTotal = Object.keys(images.image).length;
 
@@ -62,6 +62,7 @@ $(document).ready(function() {
 
 	if (localStorage.getItem("userID") === null) {
 		$('#form--comment__submit').attr("disabled", true);
+		$('.appear').removeClass('appear').addClass('disappear');
 	} else {
 		$('#form--comment__submit').attr("disabled", false);
 		$('.modal--lightbox input[name=comment-user-id]').val(localStorage.getItem("userID"));
@@ -73,6 +74,7 @@ $(document).ready(function() {
 		$('button.login').addClass('upload').append('<a href="#upload-section">Upload</a>').removeClass('login');
 		$('i.fa-sign-in').addClass('fa-upload').removeClass('fa-sign-in');
 		$('span[data-letters="Log In"').remove();
+		$('.disappear').removeClass('disappear').addClass('appear');
 	}
 
 	searchButton.click(function() {
@@ -155,6 +157,7 @@ $(document).ready(function() {
 			success: function(response) {
 				if (response === '') {
 					alert("Username already taken.");
+
 				} else {
 					alert("User " + response + " created.");
 					location.reload();
@@ -174,6 +177,7 @@ $(document).ready(function() {
         $('.modal--lightbox textarea[name="img-id"]').text(hiddenImgId);
         $('.modal--lightbox .description__author').text($(this).find('figcaption').text());
         $('.modal--lightbox .description__date').text($(this).find('img').attr('img-date'));
+        $('.modal--lightbox .description__link').text($(this).find('img').attr('src'));
 
         $.get(commentEntity, function (xml) {
         	var comments = $.xml2json(xml),
@@ -247,7 +251,7 @@ $(document).ready(function() {
 			dataType: "text",
 			success: function(response) {
 				if (response === '') {
-					console.log("Wrong credentials");
+					alert("Wrong username or password");
 				} else {
 					var JSON = $.parseJSON(response);
 					console.log(JSON);
@@ -283,5 +287,35 @@ $(document).ready(function() {
         } else {
             label.innerHtml = labelValue;
         }
+    });
+
+    $('.modal--lightbox').on('click', '.comment__author a, .description__author', function (e) {
+    	e.preventDefault();
+    	var authorName = $(this).text();
+    	console.log(authorName);
+    	$.ajax({
+			type: "GET",
+			url: "http://192.168.56.1:8080/WebApplication3/webresources/entity.user/searchUser/" +  authorName,
+			dataType: "text",
+			success: function(response) {
+				var images = $.xml2json(response),
+					imgLink = "",
+					imgOwner = "",
+					imgId = "",
+		        	imageTotal = Object.keys(images.image).length;
+		        if (!$.isArray(images.image)) {
+		        	images.image = [images.image];	
+		        }
+				$('.gallery').empty();
+				$('.show').removeClass('show');
+				for (var i = 0; i <= imageTotal; i += 1) {
+				    var imgLink = 'http://192.168.56.1/upload/' + images.image[i].ipath,
+				        imgOwner = images.image[i].uname.uid,
+				        imgId = images.image[i].iid;
+				        $('.gallery').prepend('<figure class="photo-pane"><img src="' + imgLink + '" img-id="' + imgId + '"alt=""><i class="fa fa-comment"></i><figcaption>' + images.image[i].uname.uname + '</figcaption></figure>');
+				    loadCmtNumber();         
+	        	}
+			},
+		});
     });
 });

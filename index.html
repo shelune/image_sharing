@@ -76,14 +76,15 @@
                 <figure class="image-content">
                     <img src="http://placehold.it/1200x800" alt="">
                     <figcaption class="image-description">
-                        <h4>Uploaded by <span class="description__author"></span> | Published: <span class="description__date"></span></h4>
+                        <h4>Uploaded by <a class="description__author"></a> | Published: <span class="description__date"></span></h4>
+                        <h4>Source: <span class="description__link">Some link</span></h4>
                     </figcaption>
                 </figure>
-                <form action="webresources/entity.comment" class="form--comment" method="POST">
+                <form action="webresources/entity.comment" class="form--comment" method="POST" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
                     <textarea name="comment" id="form--comment__comment" class="form--comment__comment" placeholder="Submit a comment"></textarea>
                     <textarea name="img-id" id="form--comment__hidden-id"></textarea>
                     <input type="hidden" value="" name="comment-user-id">
-                    <input class="submit-button" type="submit" value="Submit" onsubmit="" id="form--comment__submit">
+                    <input class="submit-button" type="submit" value="Submit" id="form--comment__submit">
                 </form>
                 <div class="comment-section">
 
@@ -152,7 +153,8 @@
 
         <div class="modal-overlay"></div>
         
-        <div class="container">     
+        <div class="container">
+            <h2 class="section-title disappear"><a href="home.html">To My Gallery <i class="fa fa-paper-plane-o"></i></a></h2>     
             <div class="gallery">
             <!-- (figure.photo-pane>img[src="http://placehold.it/600x250"]+i.fa.fa-heart+figcaption{Some Author}) -->
                 <figure class="photo-pane">

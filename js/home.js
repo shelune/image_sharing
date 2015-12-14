@@ -154,6 +154,7 @@ $(document).ready(function() {
         $('.modal--lightbox img').attr("src", imgSrc);
         $('.modal--lightbox textarea[name="img-id"]').text(hiddenImgId);
         $('.modal--lightbox input[name=comment-user-id]').val(currentUserID);
+        $('.modal--lightbox .description__link').text($(this).find('img').attr('src'));
 
         loadCmtNumber();
 
@@ -170,4 +171,35 @@ $(document).ready(function() {
         	}
         });
     });
+	
+	$('.modal--lightbox').on('click', '.comment__author a', function (e) {
+    	e.preventDefault();
+    	var authorName = $(this).text();
+    	console.log(authorName);
+    	$.ajax({
+			type: "GET",
+			url: "http://192.168.56.1:8080/WebApplication3/webresources/entity.user/searchUser/" +  authorName,
+			dataType: "text",
+			success: function(response) {
+				var images = $.xml2json(response),
+					imgLink = "",
+					imgOwner = "",
+					imgId = "",
+		        	imageTotal = Object.keys(images.image).length;
+		        if (!$.isArray(images.image)) {
+		        	images.image = [images.image];	
+		        }
+				$('.gallery').empty();
+				$('.show').removeClass('show');
+				for (var i = 0; i <= imageTotal; i += 1) {
+				    var imgLink = 'http://192.168.56.1/upload/' + images.image[i].ipath,
+				        imgOwner = images.image[i].uname.uid,
+				        imgId = images.image[i].iid;
+				        $('.gallery').prepend('<figure class="photo-pane"><img src="' + imgLink + '" img-id="' + imgId + '"alt=""><i class="fa fa-comment"></i><figcaption>' + images.image[i].uname.uname + '</figcaption></figure>');
+				    loadCmtNumber();         
+	        	}
+			},
+		});
+    });
+
 });
